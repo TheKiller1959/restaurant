@@ -24,6 +24,10 @@ if (config.nodeEnv === 'development') {
 //* Routes
 app.use("/api/v1/users", userRouter)
 // app.use("/api/v1/auth")
+// app.get("/test", (req, res) => {
+//   console.log(req.query)
+//   res.status(200).json(req.query)
+// })
 
 
 app.listen(config.port, () => {

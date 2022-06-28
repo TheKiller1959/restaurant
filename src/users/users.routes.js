@@ -10,6 +10,13 @@ router.route('/')
 
 router.route('/:id')
   .get(passport.authenticate('jwt', config.jwtSecret), userHttpHandler.getUserById)
+  .delete(passport.authenticate('jwt', config.jwtSecret), userHttpHandler.deleteUserByAdmin)
+  .put(passport.authenticate('jwt', config.jwtSecret), userHttpHandler.updateUserByAdmin)
+
+
+router.route('/me')
+  .delete(passport.authenticate('jwt', config.jwtSecret), userHttpHandler.deleteUserByMe)
+  .put(passport.authenticate('jwt', config.jwtSecret), userHttpHandler.updateUserMe)
 
 module.exports = {
   router
