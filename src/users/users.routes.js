@@ -1,23 +1,20 @@
 const router = require('express').Router();
 const userHttpHandler = require('./users.http')
 const passport = require('passport');
-const config = require('../config');
-
-require('../tools/auth')(passport)
+require('../tools/auth')(passport) //? Import auth.js
 
 router.route('/')
-  .get(passport.authenticate('jwt', config.jwtSecret), userHttpHandler.getAllUsers)
+  .get(passport.authenticate('jwt', { session: false }), userHttpHandler.getAllUsers)
+  .post(passport.authenticate('jwt', { session: false }), userHttpHandler.createUser)
 
 router.route('/:id')
-  .get(passport.authenticate('jwt', config.jwtSecret), userHttpHandler.getUserById)
-  .delete(passport.authenticate('jwt', config.jwtSecret), userHttpHandler.deleteUserByAdmin)
-  .put(passport.authenticate('jwt', config.jwtSecret), userHttpHandler.updateUserByAdmin)
+  .get(passport.authenticate('jwt', { session: false }), userHttpHandler.getUserById)
+  .delete(passport.authenticate('jwt', { session: false }), userHttpHandler.deleteUserByAdmin)
+  .put(passport.authenticate('jwt', { session: false }), userHttpHandler.updateUserByAdmin)
 
 
 router.route('/me')
-  .delete(passport.authenticate('jwt', config.jwtSecret), userHttpHandler.deleteUserByMe)
-  .put(passport.authenticate('jwt', config.jwtSecret), userHttpHandler.updateUserMe)
+  .delete(passport.authenticate('jwt', { session: false }), userHttpHandler.deleteUserByMe)
+  .put(passport.authenticate('jwt', { session: false }), userHttpHandler.updateUserMe)
 
-module.exports = {
-  router
-}
+exports.router = router;

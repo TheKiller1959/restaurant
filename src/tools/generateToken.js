@@ -1,3 +1,5 @@
+// ? Crear una funcion que genere un token alfanumerico aleatorio de 8 caracteres
+
 const generateToken = () => {
   return Math.random().toString(36).substring(2)
 };
@@ -5,4 +7,3 @@ const generateToken = () => {
 module.exports = {
   generateToken
 };
-// ? Crear una funcion que genere un token alfanumerico aleatorio de 8 caracteres

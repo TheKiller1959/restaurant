@@ -1,9 +1,9 @@
 const toPromise = (promise) => {
   return promise
-    .then((data) => [data, null])
+    .then((data) => [data])
     .catch((err) => [null, err])
-}
+};
 
 module.exports = {
   toPromise
-}
+};

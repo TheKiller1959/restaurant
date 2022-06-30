@@ -1,0 +1,27 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "My Academlo Restaurant",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/users": {
+      "get": {
+        "description": "Hacer un get de mis usuarios",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "jwt_token": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listamos todos los usuarios de manera exitosa"
+          }
+        }
+      }
+    }
+  }
+}

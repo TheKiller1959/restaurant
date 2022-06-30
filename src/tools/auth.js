@@ -6,12 +6,13 @@ const JwtStrategy = require("passport-jwt").Strategy,
 module.exports = (passport) => {
   const opts = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
-    secretOrKey: config.jwtSecret // debe estar en una variable de entorno
-  };
+    //todo: debe estar en una variable de entorno
+    secretOrKey: config.jwtSecret
+  }
   passport.use(
     new JwtStrategy(opts, (decoded, done) => {
       console.log("decoded jwt", decoded);
-      return done(null, decoded); // decoded sera el que retornaremos cuando se ejecute exitosamente la autenticacion
+      return done(null, decoded); //* decoded sera el que retornaremos cuando se ejecute exitosamente la autenticacion
     })
-  );
+  )
 };
