@@ -44,10 +44,11 @@ if (config.nodeEnv === 'development') {
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/customers", customerRouter);
-// app.get("/test", (req, res) => {
-//   console.log(req.query)
-//   res.status(200).json(req.query)
-// })
+app.get("/test", (req, res) => {
+  res.status(200).json({
+    message: "Welcome to my restaurant API, developed by TheKiller1959 and guided by Academlo" 
+  })
+})
 
 //? Swagger configuration
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerJson));
